@@ -1,0 +1,19 @@
+.headerbloc {
+  display: flex;
+  flex-direction: row;
+}
+
+.menu {
+  margin-left: 100px;
+  display: flex;
+  margin-top: 30px;
+  font-size: 24px;
+}
+
+.perso {
+  margin-right: 30px;
+}
+
+.comics {
+  margin-right: 30px;
+}
