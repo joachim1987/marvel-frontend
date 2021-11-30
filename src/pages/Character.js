@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Character = () => {
   const [data, setData] = useState()
@@ -24,14 +25,14 @@ const Character = () => {
     <div>
       {data.results.map((character) => {
         return (
-          <div key={character._id}>
+          <Link to={`${(character._id, character.comics)}/comics`}>
             <h2>{character.name}</h2>
             <img
               src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-              alt=""
+              alt="character"
             />
             <h3>{character.description}</h3>
-          </div>
+          </Link>
         )
       })}
     </div>

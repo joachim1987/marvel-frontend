@@ -1,11 +1,12 @@
 import axios from 'axios'
 import { useParams } from 'react-router'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Charactercomic = () => {
-  const { characterId } = useParams()
+  const params = useParams()
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState({})
+  const characterId = params.characterId
 
   useEffect(() => {
     try {
