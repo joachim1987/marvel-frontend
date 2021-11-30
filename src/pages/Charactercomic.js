@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 const Charactercomic = () => {
   const params = useParams()
+  console.log('params ici ===>', params)
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState({})
   const characterId = params.characterId
@@ -12,10 +13,10 @@ const Charactercomic = () => {
     try {
       const fetchData = async () => {
         const response = await axios.get(
-          `http://localhost:3000/comics/${characterId}`,
+          `http://localhost:4000/comics/${characterId}`,
         )
 
-        console.log(response.data)
+        console.log('response ===>', response.data)
         setData(response.data)
         setIsLoading(false)
       }
@@ -29,10 +30,15 @@ const Charactercomic = () => {
     <span>En cours de chargement...</span>
   ) : (
     <div>
-      {data.Character.map((Character) => {
+      {data.comics.map((comic) => {
         return (
-          <div key={Character._id}>
-            <p>{Character.comics}</p>
+          <div>
+            <h2>{comic.title}</h2>
+            <img
+              src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+              alt="comic"
+            />
+            <p>{comic.description}</p>
           </div>
         )
       })}

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 const Character = () => {
   const [data, setData] = useState()
   const [isLoading, setIsLoading] = useState(true)
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,7 +24,7 @@ const Character = () => {
     <div>
       {data.results.map((character) => {
         return (
-          <Link to={`${(character._id, character.comics)}/comics`}>
+          <Link to={`/comics/${character._id}`}>
             <h2>{character.name}</h2>
             <img
               src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
