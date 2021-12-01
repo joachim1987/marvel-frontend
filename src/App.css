@@ -1,19 +1,98 @@
+.container {
+  background-color: black;
+  width: 1600px;
+}
+
 .headerbloc {
   display: flex;
   flex-direction: row;
+  background-color: black;
+  width: 1600px;
 }
 
 .menu {
   margin-left: 100px;
   display: flex;
   margin-top: 30px;
-  font-size: 24px;
+  font-size: 28px;
+  color: white;
 }
 
 .perso {
-  margin-right: 30px;
+  margin-right: 150px;
+  margin-left: 150px;
+  color: white;
 }
 
 .comics {
-  margin-right: 30px;
+  margin-right: 150px;
+  margin-left: 150px;
+}
+
+.favor {
+  margin-right: 150px;
+  margin-left: 150px;
+}
+
+.nameperso {
+  display: flex;
+  flex-direction: row;
+  margin-left: 600px;
+  margin-right: 600px;
+  color: white;
+}
+
+.imgperso {
+  margin-left: 300px;
+  margin-right: 300px;
+}
+
+.imgcomics {
+  margin-left: 500px;
+  margin-right: 400px;
+}
+
+.imgcomic {
+  margin-left: 500px;
+  margin-right: 400px;
+}
+
+.descriptionperso {
+  margin-left: 300px;
+  margin-right: 300px;
+  color: azure;
+}
+
+.skipPage {
+  display: flex;
+  margin-left: 600px;
+  margin-right: 600px;
+}
+
+.previousbutton {
+  margin-left: 100px;
+}
+
+.nextbutton {
+  margin-right: 100px;
+}
+
+.pagenumber {
+  color: azure;
+}
+
+button {
+  background-color: blue;
+  color: aliceblue;
+}
+
+.searchbar {
+  width: 800px;
+  margin-left: 20px;
+  height: 50px;
+}
+
+input {
+  width: 300px;
+  height: 30px;
 }

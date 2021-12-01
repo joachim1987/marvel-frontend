@@ -29,19 +29,22 @@ const Charactercomic = () => {
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (
-    <div>
-      {data.comics.map((comic) => {
-        return (
-          <div>
-            <h2>{comic.title}</h2>
-            <img
-              src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-              alt="comic"
-            />
-            <p>{comic.description}</p>
-          </div>
-        )
-      })}
+    <div className="container">
+      <div>
+        {data.comics.map((comic) => {
+          return (
+            <div>
+              <h2 className="nameperso">{comic.title}</h2>
+              <img
+                className="imgcomic"
+                src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                alt="comic"
+              />
+              <p className="descriptionperso">{comic.description}</p>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
