@@ -13,13 +13,19 @@ const Header = () => {
       </div>
       <div className="menu">
         <div className="perso">
-          <Link to="/">personnages</Link>
+          <Link style={{ color: 'red' }} to="/">
+            personnages
+          </Link>
         </div>
         <div className="comics">
-          <Link to="/comics">comics</Link>
+          <Link style={{ color: 'red' }} to="/comics">
+            comics
+          </Link>
         </div>
         <div className="favor">
-          <Link to="/favoris">favoris</Link>
+          <Link style={{ color: 'red' }} to="/favoris">
+            favoris
+          </Link>
         </div>
       </div>
     </div>
