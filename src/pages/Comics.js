@@ -14,7 +14,6 @@ const Comics = () => {
         const response = await axios.get(
           `http://localhost:4000/comics?skip=${skip}&title=${searchtitle}`,
         )
-
         console.log(response.data)
         setData(response.data)
         setIsLoading(false)
@@ -70,9 +69,29 @@ const Comics = () => {
       </div>
       <div>
         {data.results.map((comic) => {
+          let tab = [{ title: '' }]
+          let mapped = tab.map((title, index) => {
+            return { index: { index }, value: { title } }
+          })
+
+          mapped.sort((a, b) => {
+            if (a.value < b.value) {
+              return -1
+            } else if (a.value > b.value) {
+              return 1
+            } else {
+              return 0
+            }
+          })
+
+          let results = mapped.map((title) => {
+            return tab[title.index]
+          })
+          console.log(results)
+
           return (
             <div key={comic._id}>
-              <h2 className="nameperso">{comic.title}</h2>
+              <h2 className="nameperso">({comic.title}</h2>
               <img
                 className="imgcomics"
                 src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
