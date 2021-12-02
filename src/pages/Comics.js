@@ -8,6 +8,16 @@ const Comics = () => {
   const [page, setPage] = useState(1)
   const [searchtitle, setSearchtitle] = useState('')
 
+  const sortedData = data.results.sort((a, b) => {
+    if (a.toLowerCase() < b.toLowerCase()) {
+      return -1
+    } else if (a.toLowerCase() > b.toLowerCase()) {
+      return 1
+    } else {
+      return 0
+    }
+  })
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,7 +32,7 @@ const Comics = () => {
       }
     }
     fetchData()
-  }, [skip, searchtitle])
+  }, [skip, searchtitle, sortedData])
 
   return isLoading ? (
     <span>En cours de chargement...</span>
@@ -67,28 +77,9 @@ const Comics = () => {
           <div></div>
         )}
       </div>
+
       <div>
-        {data.results.map((comic) => {
-          let tab = [{ title: '' }]
-          let mapped = tab.map((title, index) => {
-            return { index: { index }, value: { title } }
-          })
-
-          mapped.sort((a, b) => {
-            if (a.value < b.value) {
-              return -1
-            } else if (a.value > b.value) {
-              return 1
-            } else {
-              return 0
-            }
-          })
-
-          let results = mapped.map((title) => {
-            return tab[title.index]
-          })
-          console.log(results)
-
+        {sortedData.map((comic) => {
           return (
             <div key={comic._id}>
               <h2 className="nameperso">({comic.title}</h2>
