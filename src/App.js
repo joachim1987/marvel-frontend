@@ -4,12 +4,7 @@ import Character from './pages/Character'
 import Header from './components/Header'
 import Comics from './pages/Comics'
 import Charactercomic from './pages/Charactercomic'
-
-// Mettre en place react router
-// Créer la navigation (Characters, Comics, Favorites)
-// Header avec 3 Link
-
-// Requête au serveur pour récupérer une liste de personnages
+import Favoris from './pages/Favoris'
 
 function App() {
   return (
@@ -18,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Character />} />
         <Route path="/comics" element={<Comics />} />
+        <Route path="/favoris" element={<Favoris />} />
         <Route path="/comics/:characterId" element={<Charactercomic />} />
       </Routes>
     </Router>

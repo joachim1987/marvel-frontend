@@ -71,7 +71,7 @@ const Character = () => {
       <div>
         {data.results.map((character) => {
           return (
-            <div>
+            <div key={character._id}>
               <button
                 className="favbutton"
                 onClick={() => {

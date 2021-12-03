@@ -11,14 +11,14 @@ const Favoris = () => {
             <div key={index} className="card">
               <h3>{character.name}</h3>
 
-              <Link to={`/albums/${character._id}`}>
+              <Link to={`/charactercomic/${character._id}`}>
                 <img
                   src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
                   alt=""
                 />
               </Link>
 
-              <p>{character.description}</p>
+              <h3 className="descriptionperso">{character.description}</h3>
             </div>
           </>
         )

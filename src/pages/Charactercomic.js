@@ -33,7 +33,7 @@ const Charactercomic = () => {
       <div>
         {data.comics.map((comic) => {
           return (
-            <div>
+            <div key={comic._id}>
               <h2 className="nameperso">{comic.title}</h2>
               <img
                 className="imgcomic"
