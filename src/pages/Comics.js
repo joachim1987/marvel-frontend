@@ -7,13 +7,14 @@ const Comics = () => {
   const [skip, setSkip] = useState(0)
   const [page, setPage] = useState(1)
   const [searchtitle, setSearchtitle] = useState('')
+  const [favoris, setFavoris] = useState([])
 
   useEffect(() => {
     if (data) {
       data.results.sort((a, b) => {
-        if (a.toLowerCase() < b.toLowerCase()) {
+        if (a < b) {
           return -1
-        } else if (a.toLowerCase() > b.toLowerCase()) {
+        } else if (a > b) {
           return 1
         } else {
           return 0
@@ -21,16 +22,6 @@ const Comics = () => {
       })
     }
   }, [data])
-
-  const sortedData = data.results.sort((a, b) => {
-    if (a.toLowerCase() < b.toLowerCase()) {
-      return -1
-    } else if (a.toLowerCase() > b.toLowerCase()) {
-      return 1
-    } else {
-      return 0
-    }
-  })
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +37,7 @@ const Comics = () => {
       }
     }
     fetchData()
-  }, [skip, searchtitle, sortedData])
+  }, [skip, searchtitle])
 
   return isLoading ? (
     <span>En cours de chargement...</span>
@@ -93,9 +84,23 @@ const Comics = () => {
       </div>
 
       <div>
-        {sortedData.map((comic) => {
+        {data.results.map((comic) => {
           return (
             <div key={comic._id}>
+              <button
+                className="favbutton"
+                onClick={() => {
+                  const newFav = [...favoris]
+                  newFav.push(comic)
+                  setFavoris(newFav)
+                  sessionStorage.setItem('favoris', JSON.stringify(favoris))
+                  alert(
+                    `le comic ${comic.title} à bien été ajouté à vos favoris.`,
+                  )
+                }}
+              >
+                Ajout aux Favoris
+              </button>
               <h2 className="nameperso">({comic.title}</h2>
               <img
                 className="imgcomics"

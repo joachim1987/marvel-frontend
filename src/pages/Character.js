@@ -8,6 +8,7 @@ const Character = () => {
   const [skip, setSkip] = useState(0)
   const [page, setPage] = useState(1)
   const [searchtitle, setSearchtitle] = useState('')
+  const [favoris, setFavoris] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,15 +71,31 @@ const Character = () => {
       <div>
         {data.results.map((character) => {
           return (
-            <Link to={`/comics/${character._id}`}>
-              <h2 className="nameperso">{character.name}</h2>
-              <img
-                className="imgperso"
-                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                alt="character"
-              />
-              <h3 className="descriptionperso">{character.description}</h3>
-            </Link>
+            <div>
+              <button
+                className="favbutton"
+                onClick={() => {
+                  const newFav = [...favoris]
+                  newFav.push(character)
+                  setFavoris(newFav)
+                  sessionStorage.setItem('favoris', JSON.stringify(favoris))
+                  alert(
+                    `le personnage${character.name} à bien été ajouté à vos favoris.`,
+                  )
+                }}
+              >
+                Ajout aux favoris
+              </button>
+              <Link to={`/comics/${character._id}`}>
+                <h2 className="nameperso">{character.name}</h2>
+                <img
+                  className="imgperso"
+                  src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                  alt="character"
+                />
+                <h3 className="descriptionperso">{character.description}</h3>
+              </Link>
+            </div>
           )
         })}
       </div>
